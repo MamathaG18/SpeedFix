@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity  {
 
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "work  in progress", Toast.LENGTH_SHORT).show();
-              //  Intent  itemIntent = new Intent(MainActivity.this,MainItemActivity.class);
-               // startActivity(itemIntent);
+                Intent  itemIntent = new Intent(MainActivity.this,MainItemActivity.class);
+                startActivity(itemIntent);
                // Toast.makeText(MainActivity.this, "work  in progress", Toast.LENGTH_SHORT).show();
                // Toast.makeText(MainActivity.this, "work  in progress", Toast.LENGTH_SHORT).show();
             }
@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity  {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(getApplicationContext(),
                         "Authentication succeeded!", Toast.LENGTH_SHORT).show();
-                //Intent  itemIntent = new Intent(MainActivity.this,MainItemActivity.class);
-                //startActivity(itemIntent);
+                Intent  itemIntent = new Intent(MainActivity.this,MainItemActivity.class);
+                startActivity(itemIntent);
 
             }
 
