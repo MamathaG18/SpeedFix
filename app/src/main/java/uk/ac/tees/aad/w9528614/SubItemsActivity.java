@@ -22,7 +22,7 @@ public class SubItemsActivity  extends AppCompatActivity {
         List<Items> itemsList = CommonUtils.getItems(itemId);
 
         ListView listView = findViewById(R.id.list_view);
-       CustomAdapter customAdapter = new CustomAdapter(this, R.layout.custom_view, itemsList);
-       listView.setAdapter(customAdapter);
+        SubAdapter customAdapter = new SubAdapter(this, R.layout.custom_view, itemsList);
+        listView.setAdapter(customAdapter);
     }
 }

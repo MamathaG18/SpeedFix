@@ -62,7 +62,8 @@ public class SubAdapter extends ArrayAdapter<Items> {
             @Override
             public void onClick(View view) {
                 Intent subItem = new Intent(mContext,SaveOrderActivity.class);
-                subItem.putExtra("ITEMID",item.getItemId());
+                subItem.putExtra("userId",item.getItemId());
+                subItem.putExtra("headdertitle",item.getText());
                 mContext.startActivity(subItem);
 
             }
