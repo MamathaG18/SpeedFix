@@ -12,17 +12,19 @@ import java.util.List;
 
 public class SubItemsActivity  extends AppCompatActivity {
     private int itemId = 1;
+    private  String requestName = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainitem_activity);
         itemId = getIntent().getIntExtra("ITEMID",1);
+        requestName = getIntent().getExtras().getString("requestName", "nodata");
 
         List<Items> itemsList = CommonUtils.getItems(itemId);
 
         ListView listView = findViewById(R.id.list_view);
-        SubAdapter customAdapter = new SubAdapter(this, R.layout.custom_view, itemsList);
+        SubAdapter customAdapter = new SubAdapter(this, R.layout.custom_view, itemsList,requestName);
         listView.setAdapter(customAdapter);
     }
 }

@@ -22,12 +22,14 @@ public class SubAdapter extends ArrayAdapter<Items> {
     List<Items> items_list = new ArrayList<>();
     int custom_layout_id;
     private Context mContext;
+    private  String requestname;
 
-    public SubAdapter(@NonNull Context context, int resource, @NonNull List<Items> objects) {
+    public SubAdapter(@NonNull Context context, int resource, @NonNull List<Items> objects, String requestName) {
         super(context, resource, objects);
         items_list = objects;
         custom_layout_id = resource;
         mContext= context;
+        requestname =requestName;
     }
 
     @Override
@@ -56,7 +58,7 @@ public class SubAdapter extends ArrayAdapter<Items> {
         // get the item using the  position param
         Items item = items_list.get(position);
 
-        imageView.setImageResource(item.getImage_id());
+        //imageView.setImageResource(item.getImage_id());
         textView.setText(item.getText());
         itemId.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +66,7 @@ public class SubAdapter extends ArrayAdapter<Items> {
                 Intent subItem = new Intent(mContext,SaveOrderActivity.class);
                 subItem.putExtra("userId",item.getItemId());
                 subItem.putExtra("headdertitle",item.getText());
+                subItem.putExtra("requestname",requestname);
                 mContext.startActivity(subItem);
 
             }

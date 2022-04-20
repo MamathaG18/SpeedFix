@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,22 +20,24 @@ public class MainActivity extends AppCompatActivity  {
     private Executor executor;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
+    private EditText  edPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView btnNext = (TextView) findViewById(R.id.btn_next);
+         edPhone = (EditText) findViewById(R.id.edPhone);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "work  in progress", Toast.LENGTH_SHORT).show();
-                Intent  itemIntent = new Intent(MainActivity.this,MainItemActivity.class);
-                startActivity(itemIntent);
-               // Toast.makeText(MainActivity.this, "work  in progress", Toast.LENGTH_SHORT).show();
-               // Toast.makeText(MainActivity.this, "work  in progress", Toast.LENGTH_SHORT).show();
-            }
+                if(isValidate()) {
+                    Intent itemIntent = new Intent(MainActivity.this, MainItemActivity.class);
+                    startActivity(itemIntent);
+                }
+                }
         });
         executor = ContextCompat.getMainExecutor(this);
         biometricPrompt = new BiometricPrompt(MainActivity.this,
@@ -81,4 +84,14 @@ public class MainActivity extends AppCompatActivity  {
         biometricLoginButton.setOnClickListener(view -> {
             biometricPrompt.authenticate(promptInfo);
         });
-    }}
+    }
+
+    private boolean isValidate() {
+        if(edPhone.getText().length() < 10){
+            Toast.makeText(this," Enter valid phone number ",Toast.LENGTH_SHORT).show();
+            return  false;
+        }else{
+            return true;
+        }
+    }
+}

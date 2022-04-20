@@ -5,29 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/bgcolor"
     android:gravity="center"
-    android:background="@color/bg_fingerprint"
     tools:context=".MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:textColor="@color/purple_700"
+        android:text="WelCome To SpeedFix"
+        android:textSize="32sp"
+        android:layout_marginBottom="60dp"
+
+        ></TextView>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="10dp"
-        >
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="10dp">
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="10dp"
-            android:padding="20dp"
-            android:background="@color/purple_500"
-            >
+            android:id="@+id/delarLayout"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:visibility="visible"
+                android:orientation="vertical">
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:inputType="number"
+        android:id="@+id/edPhone"
+        android:maxLength="10"
         android:hint="enter phone number" />
 
     <TextView
@@ -36,19 +64,23 @@
         android:layout_gravity="center"
         android:id="@+id/btn_next"
         android:gravity="center"
+        android:layout_marginTop="30dp"
         android:textColor="@color/white"
         android:background="@color/purple_700"
         android:text="next" />
 
+
+    </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/biometric_login"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_fingerprint" />
-    </LinearLayout>
-    </LinearLayout>
+        android:layout_marginTop="40dp"
 
+        android:src="@drawable/ic_fingerprint" />
 
 </LinearLayout>

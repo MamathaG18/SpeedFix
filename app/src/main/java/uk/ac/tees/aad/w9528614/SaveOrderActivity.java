@@ -36,6 +36,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
 
@@ -43,6 +44,11 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -68,6 +74,14 @@ public class SaveOrderActivity extends BaseActivity   {
     private long UPDATE_INTERVAL = 2 * 1000;  /* 10 secs */
     private long FASTEST_INTERVAL = 2000; /* 2 sec */
     private LocationManager locationManager;
+    FirebaseDatabase firebaseDatabase;
+
+    // creating a variable for our Database
+    // Reference for Firebase.
+    DatabaseReference databaseReference;
+    RequestData requestData;
+
+
 
     private Double latitude = 0.00;
     private Double longitude = 0.00;
@@ -75,7 +89,7 @@ public class SaveOrderActivity extends BaseActivity   {
     private EditText tvreqType,tvPinCode,tvlocation,ed_alterNative_Number,tv_dealerAmount,tv_dealer_margin;
     private ImageView imLocation;
     private TextView tvAvilable,itemsCount,tvCost,tvsubrequest,tvreqCost,tvProblem,tvsubrequesttype,btnCheck;
-   private String title;
+   private String title,requestName;
     private  String userId;
     private  String isDealer = "1";
 
@@ -86,25 +100,37 @@ public class SaveOrderActivity extends BaseActivity   {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.save_order_new);
         setActivty(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
+        // below line is used to get reference for our database.
+        databaseReference = firebaseDatabase.getReference("RequestData");
+         requestData =  new RequestData();
+
+
         appLocationService = new AppLocationService(
                 SaveOrderActivity.this);
 
         userId = getIntent().getStringExtra("userId");
         title =  getIntent().getExtras().getString("headdertitle");
+        requestName =  getIntent().getExtras().getString("requestname");
         initUI();
 
 
-        //tvsubrequest.setText(requestTypeObj.getRequest());
-       // tvProblem.setText(problems.getProblem());
-       // tvsubrequesttype.setText(brands.getBrand());
+        tvsubrequest.setText(requestName);
+        // tvProblem.setText(requestName);
+        tvsubrequesttype.setText(title);
 
 
-        getSupportActionBar().setTitle("Booking request for "+title);
+        getSupportActionBar().setTitle("Booking ");
         save.setVisibility(View.VISIBLE);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+             String strPhone =    ed_alterNative_Number.getText().toString();
+             String  strAddress = tvlocation.getText().toString();
+
+                addDatatoFirebase(requestName,strPhone,strAddress,title);
                
             }
         });
@@ -133,7 +159,7 @@ public class SaveOrderActivity extends BaseActivity   {
             }
             
         });
-        save.setVisibility(View.GONE);
+      //  save.setVisibility(View.GONE);
        btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -222,6 +248,40 @@ private class GeocoderHandler extends Handler {
 
         return isTrue;
     }
+
+    private void addDatatoFirebase(String requestName, String phone, String address, String subrequest) {
+        // below 3 lines of code is used to set
+        // data in our object class.
+       requestData.setRequestType(requestName);
+        requestData.setSubRequestType(subrequest);
+        requestData.setPhoneNumber(phone);
+        requestData.setAddress(address);
+
+
+
+        // we are use add value event listener method
+        // which is called with database reference.
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // inside the method of on Data change we are setting
+                // our object class to our database reference.
+                // data base reference will sends data to firebase.
+                databaseReference.setValue(requestData);
+
+                // after adding this data we are showing toast message.
+                Toast.makeText(SaveOrderActivity.this, "data added", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // if the data is not added or it is cancelled then
+                // we are displaying a failure toast message.
+                Toast.makeText(SaveOrderActivity.this, "Fail to add data " + error, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
 
 

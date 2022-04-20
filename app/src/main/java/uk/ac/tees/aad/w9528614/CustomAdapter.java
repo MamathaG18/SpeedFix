@@ -56,13 +56,14 @@ public View getView(int position, @Nullable View convertView, @NonNull ViewGroup
         // get the item using the  position param
         Items item = items_list.get(position);
 
-        imageView.setImageResource(item.getImage_id());
+      //  imageView.setImageResource(item.getImage_id());
         textView.setText(item.getText());
         itemId.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                         Intent subItem = new Intent(mContext, SubItemsActivity.class);
                         subItem.putExtra("ITEMID",item.getItemId());
+                        subItem.putExtra("requestName",item.getText());
                         mContext.startActivity(subItem);
 
                 }
