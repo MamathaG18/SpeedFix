@@ -17,10 +17,10 @@ public class MainItemActivity extends AppCompatActivity {
         setContentView(R.layout.mainitem_activity);
 
         List<Items> itemsList = new ArrayList<>();
-        itemsList.add(new Items(1,R.drawable.chair, "TV"));
-        itemsList.add(new Items(2,R.drawable.chair, "AC"));
-        itemsList.add(new Items(3,R.drawable.chair, "Water Purifire"));
-        itemsList.add(new Items(4,R.drawable.chair, "Geezer"));
+        itemsList.add(new Items(1,R.drawable.tv, "TV"));
+        itemsList.add(new Items(2,R.drawable.ac, "AC"));
+        itemsList.add(new Items(3,R.drawable.purifier, "Water Purifier"));
+        itemsList.add(new Items(4,R.drawable.geser, "Geyser"));
 
         ListView listView = findViewById(R.id.list_view);
         CustomAdapter customAdapter = new CustomAdapter(this, R.layout.custom_view, itemsList);

@@ -56,7 +56,7 @@ public View getView(int position, @Nullable View convertView, @NonNull ViewGroup
         // get the item using the  position param
         Items item = items_list.get(position);
 
-      //  imageView.setImageResource(item.getImage_id());
+        imageView.setImageResource(item.getImage_id());
         textView.setText(item.getText());
         itemId.setOnClickListener(new View.OnClickListener() {
                 @Override

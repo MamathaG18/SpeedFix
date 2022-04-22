@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "593166210037",
+    "firebase_url": "https://speedfix-43a96-default-rtdb.firebaseio.com",
+    "project_id": "speedfix-43a96",
+    "storage_bucket": "speedfix-43a96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593166210037:android:10fec84f0e11be0b2846bc",
+        "android_client_info": {
+          "package_name": "uk.ac.tees.aad.w9528614"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593166210037-dua8oe82at0086fm4dj3er1igbc2col1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnN2F-0dQ74SZQs-UkVVirBMictZXOGbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593166210037-dua8oe82at0086fm4dj3er1igbc2col1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

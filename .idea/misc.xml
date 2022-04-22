@@ -5,7 +5,10 @@
       <map>
         <entry key="..\:/AndroidProject/app/src/main/res/drawable/bg_fingerprint.xml" value="0.1" />
         <entry key="..\:/AndroidProject/app/src/main/res/layout/activity_main.xml" value="0.14130434782608695" />
+        <entry key="..\:/AndroidProject/app/src/main/res/layout/custom_view.xml" value="0.10144927536231885" />
+        <entry key="..\:/AndroidProject/app/src/main/res/layout/main_fragment.xml" value="0.1" />
         <entry key="..\:/AndroidProject/app/src/main/res/layout/mainitem_activity.xml" value="0.14130434782608695" />
+        <entry key="..\:/AndroidProject/app/src/main/res/layout/save_order_activity.xml" value="0.10144927536231885" />
         <entry key="..\:/AndroidProject/app/src/main/res/layout/save_order_new.xml" value="0.1" />
       </map>
     </option>

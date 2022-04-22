@@ -1,52 +1,64 @@
 package uk.ac.tees.aad.w9528614;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.biometric.BiometricPrompt;
-import androidx.core.content.ContextCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+
 import java.util.concurrent.Executor;
 
-public class MainActivity extends AppCompatActivity  {
+public class mainFragment   extends Fragment {
+
     private Executor executor;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
-    private EditText  edPhone;
+    private EditText edPhone;
+    View view;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_fragment);
-       /* TextView btnNext = (TextView) findViewById(R.id.btn_next);
-         edPhone = (EditText) findViewById(R.id.edPhone);
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
+        //Inflate the layout for this fragment
+
+        view = inflater.inflate(R.layout.activity_main, container, false);
+
+
+
+
+
+        TextView btnNext = (TextView) view.findViewById(R.id.btn_next);
+        edPhone = (EditText) view.findViewById(R.id.edPhone);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "work  in progress", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "work  in progress", Toast.LENGTH_SHORT).show();
                 if(isValidate()) {
-                    Intent itemIntent = new Intent(MainActivity.this, MainItemActivity.class);
+                    Intent itemIntent = new Intent(getActivity(), MainItemActivity.class);
                     startActivity(itemIntent);
                 }
-                }
+            }
         });
-        executor = ContextCompat.getMainExecutor(this);
-        biometricPrompt = new BiometricPrompt(MainActivity.this,
+        executor = ContextCompat.getMainExecutor(getActivity());
+        biometricPrompt = new BiometricPrompt(getActivity(),
                 executor, new BiometricPrompt.AuthenticationCallback() {
             @Override
             public void onAuthenticationError(int errorCode,
                                               @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                Toast.makeText(getApplicationContext(),
+                Toast.makeText(getActivity().getApplicationContext(),
                         "Authentication error: " + errString, Toast.LENGTH_SHORT)
                         .show();
             }
@@ -55,9 +67,9 @@ public class MainActivity extends AppCompatActivity  {
             public void onAuthenticationSucceeded(
                     @NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-                Toast.makeText(getApplicationContext(),
+                Toast.makeText(getActivity().getApplicationContext(),
                         "Authentication succeeded!", Toast.LENGTH_SHORT).show();
-                Intent  itemIntent = new Intent(MainActivity.this,MainItemActivity.class);
+                Intent  itemIntent = new Intent(getActivity(),MainItemActivity.class);
                 startActivity(itemIntent);
 
             }
@@ -65,7 +77,7 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
-                Toast.makeText(getApplicationContext(), "Authentication failed",
+                Toast.makeText(getActivity().getApplicationContext(), "Authentication failed",
                         Toast.LENGTH_SHORT)
                         .show();
             }
@@ -80,19 +92,22 @@ public class MainActivity extends AppCompatActivity  {
         // Prompt appears when user clicks "Log in".
         // Consider integrating with the keystore to unlock cryptographic operations,
         // if needed by your app.
-        ImageView biometricLoginButton = findViewById(R.id.biometric_login);
+        ImageView biometricLoginButton =view. findViewById(R.id.biometric_login);
         biometricLoginButton.setOnClickListener(view -> {
             biometricPrompt.authenticate(promptInfo);
         });
+
+        return  view;
     }
 
     private boolean isValidate() {
         if(edPhone.getText().length() < 10){
-            Toast.makeText(this," Enter valid phone number ",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity()," Enter valid phone number ",Toast.LENGTH_SHORT).show();
             return  false;
         }else{
             return true;
         }
-    }*/
     }
-}
+
+    }
+

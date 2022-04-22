@@ -11,17 +11,19 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:padding="5dp"
-        tools:srcCompat="@drawable/ll" />
+        android:background="@drawable/boarder"
+        tools:srcCompat="@drawable/tv" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:text="TextView"
         android:padding="5dp"
+        android:gravity="center"
         android:textColor="@color/white"
         android:background="@color/teal_700"
         android:textAlignment="center" />
