@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
        android:textColor="@color/purple_700"
-        android:text="WelCome To SpeedFix"
+        android:text="Welcome To SpeedFix"
         android:textSize="32sp"
         android:layout_marginBottom="60dp"
 

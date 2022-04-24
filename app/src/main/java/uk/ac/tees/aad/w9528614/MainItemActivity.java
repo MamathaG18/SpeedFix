@@ -20,7 +20,7 @@ public class MainItemActivity extends AppCompatActivity {
         itemsList.add(new Items(1,R.drawable.tv, "TV"));
         itemsList.add(new Items(2,R.drawable.ac, "AC"));
         itemsList.add(new Items(3,R.drawable.purifier, "Water Purifier"));
-        itemsList.add(new Items(4,R.drawable.geser, "Geyser"));
+        itemsList.add(new Items(4,R.drawable.geyser, "Geyser"));
 
         ListView listView = findViewById(R.id.list_view);
         CustomAdapter customAdapter = new CustomAdapter(this, R.layout.custom_view, itemsList);

@@ -288,7 +288,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:elegantTextHeight="true"
-                    android:hint="please enter contact number"
+                    android:hint="please enter mobile number"
                     android:inputType="number"
                     android:maxLength="10"
                     android:gravity="center"

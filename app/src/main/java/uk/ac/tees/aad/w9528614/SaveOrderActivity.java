@@ -270,7 +270,9 @@ private class GeocoderHandler extends Handler {
                 databaseReference.setValue(requestData);
 
                 // after adding this data we are showing toast message.
-                Toast.makeText(SaveOrderActivity.this, "data added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SaveOrderActivity.this, "Request submited ", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(SaveOrderActivity.this,MainItemActivity.class);
+                startActivity(i);
             }
 
             @Override
